@@ -6,15 +6,17 @@ Un petit cahier de tâches pour les enseignants : préparation, corrections, adm
 
 ## Features
 
-- Add tasks with a category, a priority and an optional due date
-- Four categories made for teaching: lesson prep, grading, admin, parents and colleagues
-- Overdue tasks are flagged, and open tasks are sorted by due date then priority
+- A notebook page that looks the part: Seyès grid, red margin, spiral binding, a cover label with the school year and today's date
+- Tasks are written on the ruled lines, and ticking one draws a red-pen tick
+- Your progress is "graded" in a circled red score, with a teacher's remark that changes as you go
+- Four categories made for teaching, shown as highlighter swipes: lesson prep, grading, admin, parents and colleagues
+- Priority, optional due dates, overdue flags, and urgent tasks marked `!!` in the margin
 - Filter by category or status, and search by text
 - Ready-made templates: **Weekly routine** and **End of term** (report card comments, class council)
 - French and English interface, switchable in one click
 - Export and import your tasks as JSON, to back up or move between devices
 - Light and dark mode, printable, keyboard accessible
-- No framework, no build step, no dependencies
+- No framework, no build step, no dependencies. Fonts (Andika and Caveat) load from Google Fonts, and the app falls back to system fonts when offline
 
 ## Quick start
 

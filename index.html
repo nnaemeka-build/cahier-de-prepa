@@ -4,48 +4,71 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cahier de prépa</title>
-  <meta name="description" content="A tiny offline to-do notebook for teachers: lesson prep, grading, admin and parent communication.">
+  <meta name="description" content="A notebook-style to-do list for teachers: lesson prep, grading, admin and parent communication.">
+  <meta name="theme-color" content="#22305f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <main class="sheet">
-    <header class="head">
-      <div>
+  <main class="sheet" id="sheet">
+
+    <header class="top">
+      <div class="label">
         <h1 data-i18n="appTitle"></h1>
-        <p class="tagline" data-i18n="tagline"></p>
+        <p class="label-line" id="school-year"></p>
+        <p class="label-line" id="today"></p>
       </div>
-      <button id="lang-toggle" type="button" class="ghost" aria-label="Change language / Changer de langue">EN</button>
+
+      <div class="top-right">
+        <button id="lang-toggle" type="button" class="pill" aria-label="Change language / Changer de langue">EN</button>
+        <div class="grade">
+          <div class="score" id="score" role="img">
+            <svg class="ring" viewBox="0 0 150 84" preserveAspectRatio="none" aria-hidden="true">
+              <path pathLength="400" d="M22 48 C 6 22, 58 5, 106 10 C 148 15, 150 58, 100 72 C 56 82, 8 70, 14 42 C 18 26, 46 14, 72 12"/>
+            </svg>
+            <span id="score-text"></span>
+          </div>
+          <p class="remark" id="remark"></p>
+        </div>
+      </div>
     </header>
 
-    <section class="progress" aria-live="polite">
-      <div class="bar"><span id="bar-fill"></span></div>
-      <p id="progress-text"></p>
-    </section>
-
     <form id="task-form" class="add" autocomplete="off">
-      <label class="wide">
-        <span data-i18n="titleLabel"></span>
+      <label class="title-field">
+        <span class="field-label" data-i18n="titleLabel"></span>
         <input id="title" required maxlength="140" data-i18n-placeholder="titlePlaceholder">
       </label>
-      <label>
-        <span data-i18n="categoryLabel"></span>
-        <select id="category"></select>
-      </label>
-      <label>
-        <span data-i18n="priorityLabel"></span>
-        <select id="priority"></select>
-      </label>
-      <label>
-        <span data-i18n="dueLabel"></span>
-        <input id="due" type="date">
-      </label>
+
+      <div class="add-row">
+        <fieldset class="choice">
+          <legend data-i18n="categoryLabel"></legend>
+          <div class="chips" id="category-choice"></div>
+        </fieldset>
+        <fieldset class="choice">
+          <legend data-i18n="priorityLabel"></legend>
+          <div class="chips" id="priority-choice"></div>
+        </fieldset>
+        <label class="due-field">
+          <span class="field-label" data-i18n="dueLabel"></span>
+          <input id="due" type="date">
+        </label>
+      </div>
+
       <button type="submit" class="primary" data-i18n="add"></button>
     </form>
 
-    <section class="filters" aria-label="Filters">
-      <select id="filter-category" aria-label="Category"></select>
-      <select id="filter-status" aria-label="Status"></select>
-      <input id="search" type="search" data-i18n-placeholder="searchPlaceholder" aria-label="Search">
+    <section class="filters">
+      <fieldset class="choice">
+        <legend class="sr" data-i18n="categoryLabel"></legend>
+        <div class="chips" id="filter-category-choice"></div>
+      </fieldset>
+      <fieldset class="choice">
+        <legend class="sr" data-i18n="statusLabel"></legend>
+        <div class="chips" id="filter-status-choice"></div>
+      </fieldset>
+      <input id="search" type="search" class="search" data-i18n-placeholder="searchPlaceholder">
     </section>
 
     <ul id="task-list" class="tasks"></ul>
@@ -54,18 +77,19 @@
 
     <footer class="tools">
       <div class="tool-group">
-        <select id="template-select" aria-label="Template"></select>
+        <select id="template-select" aria-label="Template / Modèle"></select>
         <button id="template-add" type="button" data-i18n="addTemplate"></button>
       </div>
       <div class="tool-group">
-        <button id="clear-done" type="button" class="ghost" data-i18n="clearDone"></button>
-        <button id="export" type="button" class="ghost" data-i18n="export"></button>
-        <label class="ghost file-btn">
+        <button id="clear-done" type="button" data-i18n="clearDone"></button>
+        <button id="export" type="button" data-i18n="export"></button>
+        <label class="file-btn">
           <span data-i18n="import"></span>
           <input id="import" type="file" accept="application/json" hidden>
         </label>
       </div>
     </footer>
+
   </main>
 
   <script src="js/i18n.js"></script>
