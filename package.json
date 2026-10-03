@@ -1,0 +1,11 @@
+{
+  "name": "cahier-de-prepa",
+  "version": "1.0.0",
+  "description": "A tiny offline to-do notebook for teachers: lesson prep, grading, admin and parent communication.",
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": ["teachers", "education", "todo", "productivity", "vanilla-js", "french"],
+  "license": "MIT"
+}
